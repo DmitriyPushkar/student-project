@@ -5,14 +5,13 @@ public class StudentOrderValidator {
     static void checkAll() {
         while (true) {
                 StudentOrder so = readStudentOrder();
-            System.out.println("start");
                 if(so==null){
                     break;
                 }
-            System.out.println("finish");
                 AnswerCityRegister cityAnswer = checkCityRegister(so);
                 if(!cityAnswer.success){
-                    continue;
+                    //continue;
+                    break;
                 }
                 AnswerWedding wedAnswer = checkWedding(so);
                 AnswerChildren childAnswer = checkChildren(so);
@@ -21,34 +20,30 @@ public class StudentOrderValidator {
                 sendMail(so);
 
         }
-        System.out.println("finish 2");
 
     }
     static StudentOrder readStudentOrder(){
         StudentOrder so=new StudentOrder();
-        return null;
+        return so;
     }
     static AnswerCityRegister checkCityRegister(StudentOrder so){
-        System.out.println("CityRegister is running");
-        AnswerCityRegister ans = new AnswerCityRegister();
-        ans.success=false;
-        return ans;
-
+        CityRegisterValidator crv1= new CityRegisterValidator();
+        crv1.hostName="Host1";
+        crv1.login="login1";
+        crv1.password="password1";
+        AnswerCityRegister ans1 = crv1.checkCityRegister(so);
+        return ans1;
     }
     static AnswerWedding checkWedding(StudentOrder so){
-        System.out.println("Wedding запушен");
-        return new AnswerWedding();
+       return WeddingAnswerValidator.checkWedding(so);
     }
     static AnswerChildren checkChildren(StudentOrder so){
-        System.out.println("Children Check is running");
-        return new AnswerChildren();
+       return ChildrenAnswerValidator.checkChildren(so);
     }
     static AnswerStudent checkStudent(StudentOrder so){
-        System.out.println("Студенты проверяются");
-        return new AnswerStudent();
+        return StudentAnswerValidator.checkStudent(so);
     }
     static void sendMail(StudentOrder so){
-        System.out.println("Почта отправлена");
-
+        MailSendValidator.sendMail(so);
     }
 }
