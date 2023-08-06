@@ -1,3 +1,7 @@
+package edu.javacourse.studentorder;
+
+import edu.javacourse.studentorder.domain.StudentOrder;
+
 import java.sql.SQLOutput;
 
 public class SaveStudentOrder {
