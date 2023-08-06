@@ -1,6 +1,11 @@
 public class ChildrenAnswerValidator {
-    static AnswerChildren checkChildren(StudentOrder so){
-        System.out.println("Children Check is running");
-        return new AnswerChildren();
+    String hostName;
+    String login;
+    String password;
+     AnswerChildren checkChildren(StudentOrder so){
+        System.out.println("Дети проверяются "+hostName+","+login+","+password);
+        AnswerChildren ans=new AnswerChildren();
+        ans.success=false;
+        return ans;
     }
 }
