@@ -47,6 +47,7 @@ public class StudentOrderValidator {
 
     }
     public StudentOrder readStudentOrder(){
+        SaveStudentOrder.buildStudentOrder();
         StudentOrder so=new StudentOrder();
         return so;
     }
